@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  from_airport: MyString
+  to_airport: MyString
+  takeoff_at: 2013-01-05 12:21:09
+  landing_at: 2013-01-05 12:21:09
+  price: 1.5
+
+two:
+  from_airport: MyString
+  to_airport: MyString
+  takeoff_at: 2013-01-05 12:21:09
+  landing_at: 2013-01-05 12:21:09
+  price: 1.5
