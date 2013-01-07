@@ -25,6 +25,8 @@ class Flight < ActiveRecord::Base
     flights.delete_if { |x| x[:flight].count > joints }
   end
 
+  # given list of routes, find out how much time it takes,
+  # calculate final price and add final landing_at and takeoff_at
   def self.summarize(flights)
     results = []
     flights.each do |seq|
@@ -42,6 +44,7 @@ class Flight < ActiveRecord::Base
     results
   end
 
+  # compact tree, return routes in plain array 
   def self.flatten(init, els)
     results = []
     els.each do |e|
@@ -59,6 +62,7 @@ class Flight < ActiveRecord::Base
     results
   end
 
+  # remove dead routes, e.g. that end not with the nil
   def self.cleanup(results)
     if results.nil?
       [false, results]
@@ -70,6 +74,8 @@ class Flight < ActiveRecord::Base
     end  
   end
 
+  # find all flights starting from from_airport in a recursive manner,
+  # stop recursion if to_airport is found at the end of the route and return nil
   def self.traverse(from_airport, to_airport, at_least_at)
     flights = Flight.find :all, :conditions => 
       ['from_airport = ? AND takeoff_at >= ?', from_airport, at_least_at]
@@ -90,9 +96,4 @@ class Flight < ActiveRecord::Base
     
     results
   end
-  
-  def to_s
-    from_airport + ' -> ' + to_airport      
-  end
-  
 end
