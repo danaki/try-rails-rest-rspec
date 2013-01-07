@@ -56,7 +56,7 @@ describe Flight do
       @flights[1][:flight].should include(@svo_lhr, @lhr_sfo)
     end
   
-    it "should have different durations" do
+    it "should have different prices" do
       @flights[0][:price].should be_within(0.1).of(1300) 
       @flights[1][:price].should be_within(0.1).of(1200) 
     end   
