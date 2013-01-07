@@ -60,6 +60,11 @@ describe Flight do
       @flights[0][:price].should be_within(0.1).of(1300) 
       @flights[1][:price].should be_within(0.1).of(1200) 
     end   
+    
+    it "should have different durations" do
+      @flights[0][:duration].should be 23.hours.to_i 
+      @flights[1][:duration].should be 15.hours.to_i 
+    end    
   end
   
   it "should limit by price" do
